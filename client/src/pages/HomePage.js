@@ -21,6 +21,7 @@ const HomePage = () => {
           <Link to="/quiz" className='start-link' style={{ cursor: "pointer" }}>
             <button className="start-quiz-button">Start Quiz</button>
           </Link>
+          <p className='licence'>Developped by Fadilou</p>
         </div>
       </div>
     </div>

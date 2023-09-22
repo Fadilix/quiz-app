@@ -2,16 +2,18 @@ import express from "express";
 import bodyParser from "body-parser";
 import mysql from "mysql";
 import cors from "cors";
+import dotenv from "dotenv"
+dotenv.config();
 
 const app = express()
 app.use(express.json());
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    database: "mcq_db",
-    password: ""
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASSWORD
 });
 
 
@@ -41,7 +43,6 @@ app.get("/quiz/cat/", (req, res) => {
 })
 
 // display by using the id of the category
-
 app.get("/quiz/cat/:name", (req, res) => {
     const { name } = req.params;
     const count = parseInt(req.query.count, 10) || 5; // Use req.query.count to get the count parameter, defaulting to 5 if not provided
@@ -62,10 +63,6 @@ app.get("/quiz/cat/:name", (req, res) => {
 
 
 // display a certain number of question
-
-
-
-
 app.post('/quiz/add', (req, res) => {
     const { question, category, options, answer } = req.body;
 
@@ -106,8 +103,6 @@ app.post('/quiz/add', (req, res) => {
         );
     });
 });
-
-
 
 
 const port = 8081;
