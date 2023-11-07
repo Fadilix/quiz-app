@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>API Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        pre {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>API Documentation</h1>
+
+    <h2>Get Questions</h2>
+    <p>Endpoint to get questions with optional count parameter.</p>
+    <pre>
+        <code>GET /?count=5</code>
+    </pre>
+
+    <h2>Get All Categories</h2>
+    <p>Endpoint to get a list of all categories.</p>
+    <pre>
+        <code>GET /quiz/cat/</code>
+    </pre>
+
+    <h2>Get Questions by Category</h2>
+    <p>Endpoint to get questions by category with optional count parameter.</p>
+    <pre>
+        <code>GET /quiz/cat/:name?count=5</code>
+    </pre>
+
+    <h2>Add a Question</h2>
+    <p>Endpoint to add a new question with options and category.</p>
+    <pre>
+        <code>POST /quiz/add</code>
+    </pre>
+    <p>Request Body:</p>
+    <pre>
+        <code>{
+            "question": "What is the capital of France?",
+            "category": "Geography",
+            "options": ["London", "Berlin", "Paris", "Madrid"],
+            "answer": "Paris"
+        }</code>
+    </pre>
+
+    <h2>Environment Variables</h2>
+    <p>Ensure you have the following environment variables set:</p>
+    <pre>
+        <code>
+DB_HOST=your_database_host
+DB_USER=your_database_user
+DB_NAME=your_database_name
+DB_PASSWORD=your_database_password
+        </code>
+    </pre>
+
+    <h2>Responses</h2>
+    <p>The API returns JSON responses with appropriate status codes.</p>
+    <ul>
+        <li>200 OK - Successful response</li>
+        <li>400 Bad Request - Invalid request</li>
+        <li>500 Internal Server Error - Server error</li>
+    </ul>
+
+    <h2>Example Usage</h2>
+    <pre>
+        <code>
+const fetch = require('node-fetch');
+
+// Fetch questions with a count of 10
+fetch('http://localhost:8081/?count=10')
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
+        </code>
+    </pre>
+</body>
+
+</html>

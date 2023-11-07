@@ -4,6 +4,7 @@ import mysql from "mysql";
 import cors from "cors";
 import dotenv from "dotenv"
 dotenv.config();
+import path from "path"
 
 const app = express()
 app.use(express.json());
@@ -41,7 +42,6 @@ app.get("/quiz/cat/", (req, res) => {
         return res.json(data);
     })
 })
-
 // display by using the id of the category
 app.get("/quiz/cat/:name", (req, res) => {
     const { name } = req.params;
@@ -60,6 +60,10 @@ app.get("/quiz/cat/:name", (req, res) => {
         return res.json(data);
     });
 });
+
+app.get("/documentation", (req, res) => {
+    res.sendFile(path.join(__dirname, "index.html"))
+})
 
 
 // display a certain number of question
