@@ -21,7 +21,7 @@ const HomePage = () => {
           <Link to="/quiz" className='start-link' style={{ cursor: "pointer" }}>
             <button className="start-quiz-button">Start Quiz</button>
           </Link>
-          <p className='licence'>Developped by Fadilou</p>
+          <a className='licence' href='https://github.com/Fadilix' target='_blank' style={{ cursor: "pointer", color: "skyblue", borderBottom: "1px solid skyblue" }}>Developped by Fadilou</a>
         </div>
       </div>
     </div>
